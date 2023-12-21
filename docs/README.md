@@ -1,4 +1,4 @@
-# How to build the doc site locally
+# How to build docs locally
 
 ```bash
 pip3 install -r requirements_doc.txt
