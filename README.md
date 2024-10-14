@@ -38,5 +38,4 @@ result = cloud_predictor.predict_real_time(test_data)
 cloud_predictor.cleanup_deployment()
 # Batch inference
 result = cloud_predictor.predict(test_data)
-
 ```
