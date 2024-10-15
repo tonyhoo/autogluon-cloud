@@ -40,7 +40,7 @@ jobs:
           echo "Condition Evaluation: ${{ github.event_name == 'pull_request_target' && (contains(github.event.pull_request.labels.*.name, 'safe to test') == 'false') && steps.check.outputs.permitted == 'false' }}"
         if: ${{ github.event_name == 'pull_request_target' }}
       - name: Check PR Safe to Run
-        if: ${{ github.event_name == 'pull_request_target' && (contains(github.event.pull_request.labels.*.name, 'safe to test') == 'false') && steps.check.outputs.permitted == 'false' }}
+        if: ${{ github.event_name == 'pull_request_target' && !contains(github.event.pull_request.labels.*.name, 'safe to test') && !steps.check.outputs.permitted }}
         run: exit 1
       - name: Remove Safe to Test Label  # One commit is safe doesn't mean the next commit is safe.
         if: ${{ github.event_name == 'pull_request_target' }}
