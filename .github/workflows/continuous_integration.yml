@@ -38,9 +38,9 @@ jobs:
           echo "Permitted: ${{ steps.check.outputs.permitted }}"
           echo "${{ github.event_name == 'pull_request_target' }}"
           echo "${{ !contains(github.event.pull_request.labels.*.name, 'safe to test') }}"
-          echo "${{ !steps.check.outputs.permitted }}"
+          echo "${{ steps.check.outputs.permitted == 'false' }}"
           echo "Safe to Test Label Present: ${{ contains(github.event.pull_request.labels.*.name, 'safe to test') }}"
-          echo "Condition Evaluation: ${{ github.event_name == 'pull_request_target' && !contains(github.event.pull_request.labels.*.name, 'safe to test') && !steps.check.outputs.permitted }}"
+          echo "Condition Evaluation: ${{ github.event_name == 'pull_request_target' && !contains(github.event.pull_request.labels.*.name, 'safe to test') && steps.check.outputs.permitted=='false' }}"
         if: ${{ github.event_name == 'pull_request_target' }}
       - name: Check PR Safe to Run
         if: ${{ github.event_name == 'pull_request_target' && !contains(github.event.pull_request.labels.*.name, 'safe to test') && !steps.check.outputs.permitted }}
