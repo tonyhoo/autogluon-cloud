@@ -19,6 +19,7 @@ Currently, AutoGluon-Cloud supports [AWS SageMaker](https://aws.amazon.com/sagem
 pip install -U pip
 pip install -U setuptools wheel
 pip install autogluon.cloud
+
 ```
 
 ## Example
